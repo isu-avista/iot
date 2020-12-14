@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to avista-iot’s documentation! &#8212; avista-iot v0.1.0 documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">avista-iot v0.1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Welcome to avista-iot’s documentation!</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="welcome-to-avista-iot-s-documentation">
+<h1>Welcome to avista-iot’s documentation!<a class="headerlink" href="#welcome-to-avista-iot-s-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="module-avista_iot.config">
+<span id="config"></span><h1>Config<a class="headerlink" href="#module-avista_iot.config" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="avista_iot.config.Config">
+<em class="property">class </em><code class="sig-prename descclassname">avista_iot.config.</code><code class="sig-name descname">Config</code><a class="reference internal" href="_modules/avista_iot/config.html#Config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_iot.config.Config" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Configuration object</p>
+<p>Note that this object needs to replaced with configuration read in from yaml using
+the avista_base_server config reader</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-avista_iot.server">
+<span id="server"></span><h1>Server<a class="headerlink" href="#module-avista_iot.server" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="avista_iot.server.IoTServer">
+<em class="property">class </em><code class="sig-prename descclassname">avista_iot.server.</code><code class="sig-name descname">IoTServer</code><a class="reference internal" href="_modules/avista_iot/server.html#IoTServer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_iot.server.IoTServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Singleton instance for the IoT server</p>
+<p>Note that this class should extend the server class from avista_base_server while keeping
+the singleton characteristics. Basically, we need to merge in the capabilities of this class
+with those of the base_server.server class.</p>
+<dl class="py method">
+<dt id="avista_iot.server.IoTServer.get_config">
+<code class="sig-name descname">get_config</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">section</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_iot/server.html#IoTServer.get_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_iot.server.IoTServer.get_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>retrieves the config for the given section</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>section (str): The name of the section of the config to retrieve</p>
+</dd>
+<dt>Returns:</dt><dd><p>a dictionary representing the subsection of the configuration</p>
+</dd>
+<dt>Raises:</dt><dd><p>Exception if the provided section is None, empty, or non-existant</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="avista_iot.server.IoTServer.get_instance">
+<em class="property">static </em><code class="sig-name descname">get_instance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_iot/server.html#IoTServer.get_instance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_iot.server.IoTServer.get_instance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Static access method</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>The singleton instance of IoTServer</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="avista_iot.server.IoTServer.get_log">
+<code class="sig-name descname">get_log</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_iot/server.html#IoTServer.get_log"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_iot.server.IoTServer.get_log" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns the last five lines of the log</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>a dictionary containing a single entry “log” which is the last five lines of the log file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="avista_iot.server.IoTServer.set_config">
+<code class="sig-name descname">set_config</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">section</span></em>, <em class="sig-param"><span class="n">config_data</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_iot/server.html#IoTServer.set_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_iot.server.IoTServer.set_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the config section with the provided configuration information</p>
+<dl>
+<dt>Args:</dt><dd><p>section (str): the section to update</p>
+<p>config_data (dict): the new data for the section</p>
+</dd>
+<dt>Raises:</dt><dd><p>Exception if the provided section is None or empty or the provided data is None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="avista_iot.server.IoTServer.start">
+<code class="sig-name descname">start</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_iot/server.html#IoTServer.start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_iot.server.IoTServer.start" title="Permalink to this definition">¶</a></dt>
+<dd><p>starts the server</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="avista_iot.server.IoTServer.stop">
+<code class="sig-name descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/avista_iot/server.html#IoTServer.stop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#avista_iot.server.IoTServer.stop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stops the server</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-avista_iot.api.api_key">
+<span id="api-apikey"></span><h1>api ApiKey<a class="headerlink" href="#module-avista_iot.api.api_key" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="module-avista_iot.api.auth">
+<span id="api-auth"></span><h1>api Auth<a class="headerlink" href="#module-avista_iot.api.auth" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="module-avista_iot.api.config">
+<span id="api-config"></span><h1>api Config<a class="headerlink" href="#module-avista_iot.api.config" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="module-avista_iot.api.monitor">
+<span id="api-monitor"></span><h1>api Monitor<a class="headerlink" href="#module-avista_iot.api.monitor" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="module-avista_iot.api.sensor">
+<span id="api-sensor"></span><h1>api Sensor<a class="headerlink" href="#module-avista_iot.api.sensor" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="module-avista_iot.api.server">
+<span id="api-server"></span><h1>api Server<a class="headerlink" href="#module-avista_iot.api.server" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="module-avista_iot.api.service">
+<span id="api-service"></span><h1>api Service<a class="headerlink" href="#module-avista_iot.api.service" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="module-avista_iot.api.user">
+<span id="api-user"></span><h1>api User<a class="headerlink" href="#module-avista_iot.api.user" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Welcome to avista-iot’s documentation!</a></li>
+<li><a class="reference internal" href="#module-avista_iot.config">Config</a></li>
+<li><a class="reference internal" href="#module-avista_iot.server">Server</a></li>
+<li><a class="reference internal" href="#module-avista_iot.api.api_key">api ApiKey</a></li>
+<li><a class="reference internal" href="#module-avista_iot.api.auth">api Auth</a></li>
+<li><a class="reference internal" href="#module-avista_iot.api.config">api Config</a></li>
+<li><a class="reference internal" href="#module-avista_iot.api.monitor">api Monitor</a></li>
+<li><a class="reference internal" href="#module-avista_iot.api.sensor">api Sensor</a></li>
+<li><a class="reference internal" href="#module-avista_iot.api.server">api Server</a></li>
+<li><a class="reference internal" href="#module-avista_iot.api.service">api Service</a></li>
+<li><a class="reference internal" href="#module-avista_iot.api.user">api User</a></li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">avista-iot v0.1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Welcome to avista-iot’s documentation!</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, Isaac Griffith, Andrew Christiansen.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.3.1.
+    </div>
+  </body>
+</html>
