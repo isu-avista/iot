@@ -26,7 +26,7 @@ def get_data(sensor):
     item = {
         'name': sensor.get_name(),
         'id': sensor.get_id(),
-        'units': sensor.get_unit(),
+        'units': str(sensor.get_unit()),
     }
     data = []
     points = DataPoint.query.filter_by(sensor_id=sensor.get_id()).order_by(DataPoint.timestamp).all()
