@@ -1,4 +1,8 @@
 import unittest
+from pathlib import Path
+
+from dotenv import load_dotenv
+import os
 from avista_iot.server import IoTServer
 from avista_data import db
 
@@ -19,7 +23,6 @@ class BaseApiTest(unittest.TestCase):
 
     def setUp(self):
         self.server = IoTServer.get_instance()
-        self.server.init()
         self.server.start()
         self.client = self.server.app.test_client()
 

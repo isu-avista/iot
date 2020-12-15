@@ -37,3 +37,6 @@ dbdata:
     item: DBMS Password
     value: '*******'
     type: password
+service:
+  host: localhost
+  port: 5005
