@@ -9,6 +9,7 @@ class IoTServer(Service):
         super().__init__()
 
     def _setup_endpoints(self):
+        super()._setup_endpoints()
         self._app.register_blueprint(api.api_bp)
 
     def start(self):

@@ -5,7 +5,7 @@ from flask import Blueprint, jsonify
 from flask_jwt_extended import verify_jwt_in_request, get_jwt_claims
 from avista_data.role import Role
 
-api_bp = Blueprint('api', __name__)
+api_bp = Blueprint('iot', __name__)
 
 
 def role_required(role):
