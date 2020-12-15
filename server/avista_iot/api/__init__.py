@@ -35,4 +35,4 @@ def role_required(role):
     return decorator
 
 
-from avista_iot.api import api_key, auth, config, monitor, sensor, server, service, user
+from avista_iot.api import api_key, monitor, sensor, server
