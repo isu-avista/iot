@@ -3,4 +3,4 @@
 This includes the server as a singleton and the config information for that flask instance
 """
 
-from avista_iot import server, config
+from avista_iot import server
