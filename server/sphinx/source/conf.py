@@ -23,7 +23,7 @@ copyright = '2020, Isaac Griffith, Andrew Christiansen'
 author = 'Isaac Griffith, Andrew Christiansen'
 
 # The full version, including alpha/beta/rc tags
-release = 'v0.1.1'
+release = 'v0.1.2'
 
 
 # -- General configuration ---------------------------------------------------

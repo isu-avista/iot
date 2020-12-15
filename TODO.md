@@ -2,14 +2,11 @@
 
 ## Server Side
 
-* Need to merge the avista-iot.server code with the avista-base-server.server code in order to only have one
-* The avista-iot.server should inherit from the base-server but should keep the Singleton components
 * Testing of all routes needs to be completed (though some are complete)
 * Need to integrate the use of the avista-sensor sensor processor manager into the process (this should be done in the start() and stop() methods of IoTServer)
 * When a new sensor is added it needs to inform the SensorProcessorManager of the event, so that the new sensor can be added (similar approaches for sensor updates and removals)
 * Sensor data methods need to be attached to a route
 * API Keys is not right, and probably will need to be removed (but not quite yet)
-* Need to shift to avista-base-server config
 * Need to shift from sqlite to mariadb or mysql
 * Need to begin the process of defining deployment
 * Need to get travis ci running
