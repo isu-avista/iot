@@ -110,7 +110,7 @@
                       label-for="form-module-input">
           <b-form-input id="form-module-input"
                         type="text"
-                        v-model="addSensorForm.module"
+                        v-model="addSensorForm.mod"
                         required
                         placeholder="Enter qualified module name">
           </b-form-input>
@@ -196,7 +196,7 @@
                       label-for="form-mod-edit-input">
           <b-form-input id="form-mod-edit-input"
                         type="text"
-                        v-model="editSensorForm.module"
+                        v-model="editSensorForm.mod"
                         required
                         placeholder="Enter qualified module name">
           </b-form-input>
@@ -368,7 +368,7 @@ export default {
         quantity: this.addSensorForm.quantity,
         unit: this.addSensorForm.unit,
         module: this.addSensorForm.mod,
-        cls: this.addSensorForm.class,
+        cls: this.addSensorForm.cls,
         pinout: this.addSensorForm.pinout,
       };
       this.addSensor(payload);
@@ -386,7 +386,7 @@ export default {
         name: this.editSensorForm.name,
         quantity: this.editSensorForm.quantity,
         unit: this.editSensorForm.unit,
-        module: this.editSensorForm.module,
+        module: this.editSensorForm.mod,
         cls: this.editSensorForm.cls,
         pinout: this.editSensorForm.pinout,
       };
