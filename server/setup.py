@@ -4,8 +4,8 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="",
-    version="0.1.1",
+    name="avista_iot",
+    version="0.1.2",
     author="Isaac Griffith",
     author_email="grifisaa@isu.edu",
     description="",
