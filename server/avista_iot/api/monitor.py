@@ -7,7 +7,6 @@ from avista_iot import server
 from avista_iot.api import role_required
 import uuid
 
-
 STATUS = [
     {'id': uuid.uuid4().hex, 'name': 'Power', 'value': 2},
     {'id': uuid.uuid4().hex, 'name': 'Network', 'value': 2},
@@ -22,6 +21,8 @@ def read_status():
     return jsonify(STATUS)
 
 
+@bp.route('/monitor/sensors/data/<sensor>', methods=['GET'])
+@role_required(Role.USER)
 def get_data(sensor):
     item = {
         'name': sensor.get_name(),
@@ -36,6 +37,8 @@ def get_data(sensor):
     return item
 
 
+@bp.route('/monitor/sensors/data/<sensor>/<since>', methods=['GET'])
+@role_required(Role.USER)
 def get_data_since(sensor, since):
     item = {
         'name': sensor.get_name(),
