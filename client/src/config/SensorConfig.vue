@@ -388,7 +388,7 @@ export default {
         unit: this.editSensorForm.unit,
         module: this.editSensorForm.mod,
         cls: this.editSensorForm.cls,
-        pinout: this.editSensorForm.pinout,
+        pinout: this.getPinoutPayload(),
       };
       this.updateSensor(payload, this.editSensorForm.id);
     },
@@ -414,6 +414,15 @@ export default {
     },
     onDeletePinoutAdd(pinout) {
       this.addSensorForm.pinout.pop(pinout.var);
+    },
+    getPinoutPayload() {
+      const payload = [];
+      for (let i = 0; i < this.editSensorForm.pinout.length; i += 1) {
+        if (!('id' in this.editSensorForm.pinout[i])) {
+          payload.push(this.editSensorForm.pinout[i]);
+        }
+      }
+      return payload;
     },
   },
   created() {
