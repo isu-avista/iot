@@ -18,6 +18,7 @@
 <script>
 import axios from 'axios';
 import authHeader from '@/services/auth-header';
+import paths from '@/paths';
 
 export default {
   name: 'Status',
@@ -30,7 +31,7 @@ export default {
   },
   methods: {
     getData() {
-      const path = 'http://localhost:5000/monitor/status';
+      const path = paths.status;
       axios.get(path, { headers: authHeader() })
         .then((res) => {
           this.items = [];

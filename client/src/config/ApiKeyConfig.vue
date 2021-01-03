@@ -28,6 +28,7 @@
 <script>
 import axios from 'axios';
 import authHeader from '@/services/auth-header';
+import paths from '@/paths';
 
 export default {
   name: 'ApiKeyConfig',
@@ -39,7 +40,7 @@ export default {
   },
   methods: {
     getData() {
-      const path = 'http://localhost:5000/keys';
+      const path = paths.keyCfg;
       axios.get(path, { headers: authHeader() })
         .then((res) => {
           this.keys = res.data;

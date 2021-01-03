@@ -15,13 +15,13 @@ STATUS = [
 ]
 
 
-@bp.route('/monitor/status', methods=['GET'])
+@bp.route('/api/monitor/status', methods=['GET'])
 @role_required(Role.USER)
 def read_status():
     return jsonify(STATUS)
 
 
-@bp.route('/monitor/sensors/data/<sensor>', methods=['GET'])
+@bp.route('/api/monitor/sensors/data/<sensor>', methods=['GET'])
 @role_required(Role.USER)
 def get_data(sensor):
     item = {
@@ -37,7 +37,7 @@ def get_data(sensor):
     return item
 
 
-@bp.route('/monitor/sensors/data/<sensor>/<since>', methods=['GET'])
+@bp.route('/api/monitor/sensors/data/<sensor>/<since>', methods=['GET'])
 @role_required(Role.USER)
 def get_data_since(sensor, since):
     item = {
@@ -54,7 +54,7 @@ def get_data_since(sensor, since):
     return item
 
 
-@bp.route('/monitor/sensors', methods=['GET'])
+@bp.route('/api/monitor/sensors', methods=['GET'])
 @role_required(Role.USER)
 def read_sensor_data():
     items = []
@@ -71,7 +71,7 @@ def read_sensor_data():
     return jsonify(items)
 
 
-@bp.route('/monitor/sensors/<sensor_id>', methods=['GET'])
+@bp.route('/api/monitor/sensors/<sensor_id>', methods=['GET'])
 @role_required(Role.USER)
 def read_sensor_data_since(sensor_id):
     since = request.args.get('since')
@@ -82,7 +82,7 @@ def read_sensor_data_since(sensor_id):
         get_data(sensor)
 
 
-@bp.route('/monitor/log', methods=['GET'])
+@bp.route('/api/monitor/log', methods=['GET'])
 @role_required(Role.USER)
 def read_logger_data():
     return jsonify(server.IoTServer.get_instance().get_log())

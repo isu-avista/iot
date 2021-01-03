@@ -8,14 +8,14 @@
             <b-row>
               <b-col>
                 <ServiceConfig name="Service Configuration" id="sysdata"
-                 path="http://localhost:5000/api/config/sysdata"/>
+                 :path="paths.systemCfg"/>
               </b-col>
             </b-row>
             <br/><br/>
             <b-row>
               <b-col>
                 <DbConfig name="Database Configuration" id="dbdata"
-                 path="http://localhost:5000/api/config/dbdata"/>
+                 :path="paths.databaseCfg"/>
               </b-col>
             </b-row>
             <br/><br/>
@@ -56,6 +56,7 @@ import SensorConfig from '@/config/SensorConfig.vue';
 import ServerConfig from '@/config/ServerConfig.vue';
 import UserConfig from '@/config/UserConfig.vue';
 import ApiKeyConfig from '@/config/ApiKeyConfig.vue';
+import paths from '@/paths';
 
 export default {
   name: 'Config',
@@ -66,6 +67,11 @@ export default {
     ServerConfig,
     UserConfig,
     ApiKeyConfig,
+  },
+  data() {
+    return {
+      paths,
+    };
   },
 };
 </script>

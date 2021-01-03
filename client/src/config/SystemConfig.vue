@@ -19,7 +19,7 @@
     <br><br>
     <b-table hover :items='db_data'>
       <template v-slot:cell(db_item)="row">
-        {{ row.item.db_item }}
+        {{ row.item.item }}
       </template>
       <template v-slot:cell(value)="row" v-if="editable">
         <b-form-input v-model="row.item.value"/>
@@ -87,6 +87,7 @@
 // import ConfigComp from '@/config/ConfigComp.vue';
 import axios from 'axios';
 import authHeader from '@/services/auth-header';
+import paths from '@/paths';
 
 export default {
   name: 'SystemConfig',
@@ -100,7 +101,7 @@ export default {
         location: '',
         period: '',
         port: 0,
-      }
+      },
     };
   },
   components: {
@@ -117,7 +118,8 @@ export default {
 
     },
     getData() {
-      const path = 'http://localhost:5000/config/sysdata';
+      // const path = paths.systemCfg;
+      const path = 'http://localhost:5000/api/sysdata';
       axios.get(path, { headers: authHeader() })
         .then((res) => {
           this.sys_data = res.data;
@@ -128,13 +130,13 @@ export default {
         });
     },
     editData() {
-      this.editForm = sys_data
+      this.editForm = this.sys_data;
     },
     onSubmitUpdate(evt) {
       evt.preventDefault();
       this.$refs.editSysData.hide();
       const payload = [
-        { sys_item: 'System Identifier', value: sys_data[0].value },
+        { sys_item: 'System Identifier', value: this.sys_data[0].value },
         { sys_item: 'Equipment Monitored', value: this.editForm.equip },
         { sys_item: 'Location', value: this.editForm.location },
         { sys_item: 'Data Collection Periodicity', value: this.editForm.period },
@@ -143,6 +145,7 @@ export default {
       this.updateData(payload, this.editForm.id);
     },
     updateData(payload) {
+      // const path = paths.systemCfg;
       const path = 'http://localhost:5000/config/sysdata';
       axios.put(path, payload, { headers: authHeader() })
         .then(() => {
@@ -167,7 +170,7 @@ export default {
       this.editForm.location = '';
       this.editForm.period = '';
       this.editForm.port = 0;
-    }
+    },
   },
   created() {
     this.getData();

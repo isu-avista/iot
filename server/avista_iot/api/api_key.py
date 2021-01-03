@@ -17,7 +17,7 @@ APIKEYS = [
 ]
 
 
-@bp.route('/keys', methods=['GET', 'POST'])
+@bp.route('/api/keys', methods=['GET', 'POST'])
 def handle_api_keys():
     response_object = {'status': 'success'}
     if request.method == 'POST':
@@ -28,7 +28,7 @@ def handle_api_keys():
     return jsonify(response_object)
 
 
-@bp.route('/keys/<key_id>', methods=['PUT'])
+@bp.route('/api/keys/<key_id>', methods=['PUT'])
 def update_api_key(key_id):
     response_object = {'status': 'success'}
     if request.method == 'PUT':
@@ -37,6 +37,6 @@ def update_api_key(key_id):
     return jsonify(response_object)
 
 
-@bp.route('/keys/<key_id>', methods=['DELETE'])
+@bp.route('/api/keys/<key_id>', methods=['DELETE'])
 def delete_api_key(key_id):
     pass
