@@ -12,6 +12,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Removed
 
+## [0.1.4](https://github.com/isu-avista/iot/releases/tag/v0.1.4) - 2021-1-3
+
+### Added
+* Incorporated process manager into IoTServer
+
+### Changed
+* Update get_data and get_data_since routes
+* Sensor routes automatically update the list of processors in the process manager
+* Fixed pinout duplication bug when updating a sensor
+* Update profile view
+* Moved all api paths within the client to paths.js and updated their references
+
+### Removed
+
 ## [0.1.3](https://github.com/isu-avista/iot/releases/tag/v0.1.3) - 2020-12-15
 
 ### Added
