@@ -249,8 +249,7 @@
 <script>
 import axios from 'axios';
 import authHeader from '@/services/auth-header';
-
-const API_URL = 'http://localhost:5000/api/';
+import paths from '@/paths';
 
 export default {
   name: 'SensorConfig',
@@ -296,7 +295,7 @@ export default {
   },
   methods: {
     getData() {
-      const path = `${API_URL}sensors`;
+      const path = paths.sensorCfg;
       axios.get(path, { headers: authHeader() })
         .then((res) => {
           this.sensors = res.data;
@@ -322,7 +321,7 @@ export default {
       this.editSensorForm.pinout = [];
     },
     addSensor(payload) {
-      const path = `${API_URL}sensors`;
+      const path = paths.sensorCfg;
       axios.post(path, payload, { headers: authHeader() })
         .then(() => {
           this.getData();
@@ -337,7 +336,7 @@ export default {
       this.editSensorForm = sensor;
     },
     updateSensor(payload, sensorID) {
-      const path = `${API_URL}sensors/${sensorID}`;
+      const path = `${paths.sensorCfg}/${sensorID}`;
       axios.put(path, payload, { headers: authHeader() })
         .then(() => {
           this.getData();
@@ -349,7 +348,7 @@ export default {
         });
     },
     removeSensor(sensorID) {
-      const path = `${API_URL}sensors/${sensorID}`;
+      const path = `${paths.sensorCfg}/${sensorID}`;
       axios.delete(path, { headers: authHeader() })
         .then(() => {
           this.getData();
@@ -388,7 +387,7 @@ export default {
         unit: this.editSensorForm.unit,
         module: this.editSensorForm.mod,
         cls: this.editSensorForm.cls,
-        pinout: this.editSensorForm.pinout,
+        pinout: this.getPinoutPayload(),
       };
       this.updateSensor(payload, this.editSensorForm.id);
     },
@@ -414,6 +413,15 @@ export default {
     },
     onDeletePinoutAdd(pinout) {
       this.addSensorForm.pinout.pop(pinout.var);
+    },
+    getPinoutPayload() {
+      const payload = [];
+      for (let i = 0; i < this.editSensorForm.pinout.length; i += 1) {
+        if (!('id' in this.editSensorForm.pinout[i])) {
+          payload.push(this.editSensorForm.pinout[i]);
+        }
+      }
+      return payload;
     },
   },
   created() {

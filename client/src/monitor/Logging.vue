@@ -9,6 +9,7 @@
 <script>
 import axios from 'axios';
 import authHeader from '@/services/auth-header';
+import paths from '@/paths';
 
 export default {
   name: 'Logger',
@@ -19,7 +20,7 @@ export default {
   },
   methods: {
     getData() {
-      const path = 'http://localhost:5000/monitor/log';
+      const path = paths.log;
       axios.get(path, { headers: authHeader() })
         .then((res) => {
           this.log = res.data.log;

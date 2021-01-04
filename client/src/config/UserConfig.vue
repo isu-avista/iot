@@ -124,8 +124,7 @@
 <script>
 import axios from 'axios';
 import authHeader from '@/services/auth-header';
-
-const API_URL = 'http://localhost:5000/api/';
+import paths from '@/paths';
 
 export default {
   name: 'UserConfig',
@@ -149,7 +148,7 @@ export default {
   },
   methods: {
     getData() {
-      const path = `${API_URL}users`;
+      const path = paths.userCfg;
       axios.get(path, { headers: authHeader() })
         .then((res) => {
           this.users = res.data;
@@ -160,7 +159,7 @@ export default {
         });
     },
     addUser(payload) {
-      const path = `${API_URL}users`;
+      const path = paths.userCfg;
       axios.post(path, payload, { headers: authHeader() })
         .then(() => {
           this.getData();
@@ -218,7 +217,7 @@ export default {
       this.updateUser(payload, this.editForm.id);
     },
     updateUser(payload, userID) {
-      const path = `http://localhost:5000/users/${userID}`;
+      const path = `${paths.userCfg}/${userID}`;
       axios.put(path, payload, { headers: authHeader() })
         .then(() => {
           this.getData();
@@ -236,7 +235,7 @@ export default {
       this.getUsers();
     },
     removeUser(userID) {
-      const path = `http://localhost:5000/users/${userID}`;
+      const path = `${paths.userCfg}/${userID}`;
       axios.delete(path, { headers: authHeader() })
         .then(() => {
           this.getData();

@@ -1,13 +1,14 @@
 /* eslint-disable */
 import axios from 'axios';
+import paths from "@/paths";
 
-const API_URL = 'http://localhost:5000/api';
+const API_URL = paths.basePath;
 
 class AuthService {
   // POST {username, password} & save JWT to local storage
   login(user) {
     return axios
-      .post(API_URL + '/login', {
+      .post(`${API_URL}/login`, {
         email: user.email,
         password: user.password,
       })

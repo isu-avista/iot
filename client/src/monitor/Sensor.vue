@@ -17,6 +17,7 @@
 import VueApexCharts from 'vue-apexcharts';
 import axios from 'axios';
 import authHeader from '@/services/auth-header';
+import paths from '@/paths';
 
 export default {
   name: 'Sensors',
@@ -30,7 +31,7 @@ export default {
   },
   methods: {
     getData() {
-      const path = 'http://localhost:5000/monitor/sensors';
+      const path = paths.sensor;
       axios.get(path, { headers: authHeader() })
         .then((res) => {
           this.sensors = [];
