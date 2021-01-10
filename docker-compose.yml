@@ -1,0 +1,27 @@
+version: "3.9"
+
+services:
+
+  database:
+    image: postgres:12-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=avista
+      - POSTGRES_PASSWORD=avistapw
+      - POSTGRES_DB=avista_db
+
+  backend:
+    build: ./server
+    ports:
+      - "5000:5000"
+
+  frontend:
+    build: ./client
+    ports:
+      - "8080:8080"
+
+volumes:
+  postgres_data:
