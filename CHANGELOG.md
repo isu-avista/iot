@@ -12,7 +12,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Removed
 
-## [0.1.4](https://github.com/isu-avista/iot/releases/tag/v0.1.4) - 2021-1-3
+## [0.1.5](https://github.com/isu-avista/iot/releases/tag/v0.1.5) - 2021-01-11
+
+### Added
+- Added psycopg2-binary to server `requirements.txt` in preparation for switching to postgres
+
+### Changed
+- Fixed version numbers in documentation
+
+### Removed
+
+## [0.1.4](https://github.com/isu-avista/iot/releases/tag/v0.1.4) - 2021-01-03
 
 ### Added
 * Incorporated process manager into IoTServer
