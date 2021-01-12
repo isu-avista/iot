@@ -12,11 +12,16 @@ services:
       - POSTGRES_USER=avista
       - POSTGRES_PASSWORD=avistapw
       - POSTGRES_DB=avista_db
+    restart: always
 
   backend:
     build: ./server
+    command: gunicorn --bind 0.0.0.0:5000 --workers=4 app:app
     ports:
       - "5000:5000"
+    depends_on:
+      - database
+    restart: always
 
   frontend:
     build: ./client

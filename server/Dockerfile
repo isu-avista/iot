@@ -8,6 +8,7 @@ WORKDIR ./
 RUN apt-get update -y
 RUN apt-get install -y python3-pip
 RUN apt-get install -y python-dev
+RUN apt-get install -y gunicorn
 RUN apt-get install -y git
 
 RUN mkdir -p /root/.ssh && \
@@ -28,7 +29,3 @@ RUN pip3 install -r requirements.txt
 COPY ./ ./
 
 RUN rm -rf /root/.ssh/
-
-ENTRYPOINT [ "python3" ]
-
-CMD [ "app.py" ]
