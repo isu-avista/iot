@@ -25,4 +25,4 @@ COPY --from=build-stage /app/dist /app
 COPY nginx.conf /etc/nginx/nginx.conf
 
 #CMD [ "http-server", "dist"]
-#CMD ["nginx", "-g", "daemon off;"]
+CMD ["nginx", "-g", "daemon off;"]
