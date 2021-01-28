@@ -46,15 +46,17 @@
             </tbody>
           </table>
           <div>
-            <b-button v-b-toggle.pinout-collapse variant="secondary">Toggle Pin Out</b-button>
-            <b-collapse id="pinout-collapse" class="mt-2">
+            <b-button v-b-toggle.parameters-collapse variant="secondary">
+              Toggle Parameters
+            </b-button>
+            <b-collapse id="parameters-collapse" class="mt-2">
               <b-card>
-                <b-table hover :items="sensor.pinout" show-empty>
-                  <template v-slot:cell(var)="row">
-                    {{ row.item.var }}
+                <b-table hover :items="sensor.parameters" show-empty>
+                  <template v-slot:cell(key)="row">
+                    {{ row.item.key }}
                   </template>
-                  <template v-slot:cell(pin)="row">
-                    {{ row.item.pin }}
+                  <template v-slot:cell(value)="row">
+                    {{ row.item.value }}
                   </template>
                 </b-table>
               </b-card>
@@ -128,24 +130,25 @@
         <div>
           <b-row>
             <b-col>
-              <h5>Pin Out:</h5>
+              <h5>Parameters: </h5>
             </b-col>
             <b-col>
-            <h5 class="text-right"><b-button variant='success' @click="onAddPinoutRowAdd()">
+            <h5 class="text-right"><b-button variant='success' @click="onAddParameterRowAdd()">
               <b-icon icon='plus-circle'/></b-button></h5>
             </b-col>
           </b-row>
 
-          <b-table hover :items="addSensorForm.pinout" show-empty :fields="add_pin_fields">
-            <template v-slot:cell(var)="row">
-              <b-form-input v-model="row.item.var"/>
+          <b-table hover :items="addSensorForm.parameters"
+                   show-empty :fields="add_parameter_fields">
+            <template v-slot:cell(key)="row">
+              <b-form-input v-model="row.item.key"/>
             </template>
-            <template v-slot:cell(pin)="row">
-              <b-form-input v-model="row.item.pin"/>
+            <template v-slot:cell(value)="row">
+              <b-form-input v-model="row.item.value"/>
             </template>
             <template v-slot:cell(actions)="row">
               <b-button-group>
-                <b-button variant='danger' @click="onDeletePinoutAdd(row.item)">
+                <b-button variant='danger' @click="onDeleteParameterAdd(row.item)">
                 <b-icon icon='x-circle'/></b-button>
               </b-button-group>
             </template>
@@ -214,24 +217,25 @@
         <div>
           <b-row>
             <b-col>
-              <h5>Pin Out:</h5>
+              <h5>Parameters: </h5>
             </b-col>
             <b-col>
-            <h5 class="text-right"><b-button variant='success' @click="onAddPinoutRowEdit()">
+            <h5 class="text-right"><b-button variant='success' @click="onAddParameterRowEdit()">
               <b-icon icon='plus-circle'/></b-button></h5>
             </b-col>
           </b-row>
 
-          <b-table hover :items="editSensorForm.pinout" show-empty :fields="edit_pin_fields">
-            <template v-slot:cell(var)="row">
-              <b-form-input v-model="row.item.var"/>
+          <b-table hover :items="editSensorForm.parameters" show-empty
+                   :fields="edit_parameter_fields">
+            <template v-slot:cell(key)="row">
+              <b-form-input v-model="row.item.key"/>
             </template>
-            <template v-slot:cell(pin)="row">
-              <b-form-input v-model="row.item.pin"/>
+            <template v-slot:cell(value)="row">
+              <b-form-input v-model="row.item.value"/>
             </template>
             <template v-slot:cell(actions)="row">
               <b-button-group>
-                <b-button variant='danger' @click="onDeletePinoutEdit(row.item)">
+                <b-button variant='danger' @click="onDeleteParameterEdit(row.item)">
                 <b-icon icon='x-circle'/></b-button>
               </b-button-group>
             </template>
@@ -256,14 +260,14 @@ export default {
   data() {
     return {
       sensors: {},
-      add_pin_fields: [
-        { key: 'var', label: 'Var' },
-        { key: 'pin', label: 'Pin' },
+      add_parameter_fields: [
+        { key: 'key', label: 'Key' },
+        { key: 'Value', label: 'Value' },
         { key: 'actions', label: 'Actions' },
       ],
-      edit_pin_fields: [
-        { key: 'var', label: 'Var' },
-        { key: 'pin', label: 'Pin' },
+      edit_parameter_fields: [
+        { key: 'key', label: 'Key' },
+        { key: 'value', label: 'Value' },
         { key: 'actions', label: 'Actions' },
       ],
       units: [
@@ -280,7 +284,7 @@ export default {
         unit: '',
         module: '',
         cls: '',
-        pinout: [],
+        parameters: [],
       },
       editSensorForm: {
         id: '',
@@ -289,7 +293,7 @@ export default {
         unit: '',
         module: '',
         cls: '',
-        pinout: [],
+        parameters: [],
       },
     };
   },
@@ -311,14 +315,14 @@ export default {
       this.addSensorForm.unit = '';
       this.addSensorForm.mod = '';
       this.addSensorForm.class = '';
-      this.addSensorForm.pinout = [];
+      this.addSensorForm.parameters = [];
       this.editSensorForm.id = '';
       this.editSensorForm.name = '';
       this.editSensorForm.quantity = '';
       this.editSensorForm.unit = '';
       this.editSensorForm.mod = '';
       this.editSensorForm.class = '';
-      this.editSensorForm.pinout = [];
+      this.editSensorForm.parameters = [];
     },
     addSensor(payload) {
       const path = paths.sensorCfg;
@@ -368,7 +372,7 @@ export default {
         unit: this.addSensorForm.unit,
         module: this.addSensorForm.mod,
         cls: this.addSensorForm.cls,
-        pinout: this.addSensorForm.pinout,
+        parameters: this.addSensorForm.parameters,
       };
       this.addSensor(payload);
       this.initForm();
@@ -387,7 +391,7 @@ export default {
         unit: this.editSensorForm.unit,
         module: this.editSensorForm.mod,
         cls: this.editSensorForm.cls,
-        pinout: this.getPinoutPayload(),
+        parameters: this.editSensorForm.parameters,
       };
       this.updateSensor(payload, this.editSensorForm.id);
     },
@@ -400,25 +404,25 @@ export default {
     onDeleteSensor(sensor) {
       this.removeSensor(sensor.id);
     },
-    onAddPinoutRowEdit() {
-      this.editSensorForm.pinout.push({ var: 'new', pin: -1 });
+    onAddParameterRowEdit() {
+      this.editSensorForm.parameters.push({ key: 'key', value: 'value' });
     },
-    onAddPinoutRowAdd() {
-      this.addSensorForm.pinout.push({ var: 'new', pin: -1 });
+    onAddParameterRowAdd() {
+      this.addSensorForm.parameters.push({ key: 'key', value: 'value' });
     },
-    onDeletePinoutEdit(pinout) {
+    onDeleteParameterEdit(parameter) {
       // eslint-disable-next-line
-      console.log("Pinout = " + pinout.var)
-      this.editSensorForm.pinout.pop(pinout.var);
+      console.log("Parameter = " + parameter.key)
+      this.editSensorForm.parameters.pop(parameter.key);
     },
-    onDeletePinoutAdd(pinout) {
-      this.addSensorForm.pinout.pop(pinout.var);
+    onDeleteParameterAdd(parameter) {
+      this.addSensorForm.parameters.pop(parameter.key);
     },
     getPinoutPayload() {
       const payload = [];
-      for (let i = 0; i < this.editSensorForm.pinout.length; i += 1) {
-        if (!('id' in this.editSensorForm.pinout[i])) {
-          payload.push(this.editSensorForm.pinout[i]);
+      for (let i = 0; i < this.editSensorForm.parameters.length; i += 1) {
+        if (!('id' in this.editSensorForm.parameters[i])) {
+          payload.push(this.editSensorForm.parameters[i]);
         }
       }
       return payload;
