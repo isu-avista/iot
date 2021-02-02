@@ -14,7 +14,54 @@ The IoT component of an energy management decision support tool.
 
 ## Installation
 
-TBD...
+1. Clone the IoT repository 
+   ```shell
+   git clone https://github.com/isu-avista/iot.git
+   ```
+   
+2. Install docker and docker-compose
+   ```shell
+   # install docker
+   curl -fsSL https://get.docker.com -o get-docker.sh
+   sudo sh get-docker.sh
+   
+   # install docker-compose
+   python3 -m pip install docker-compose
+   ```
+   
+3. Install latest libseccomp2 (there will be an issue building the docker image if this step is skipped)
+   ```shell
+   wget http://ftp.debian.org/debian/pool/main/libs/libseccomp/libseccomp2_2.5.1-1_armhf.deb
+   sudo dpkg -i libseccomp2_2.5.1-1_armhf.deb
+   ```
+   
+4. Install postgres, create a user and a database
+   ```shell
+   # install postgres
+   sudo apt install postgresql libpq-dev postgresql-client postgresql-client-common -y
+   
+   # open psql
+   sudo -u postgresl psql
+   
+   # now in psql execute the following commands
+   CREATE DATABASE avistadb;
+   CREATE USER avista WITH ENCRYPTED PASSWORD 'avistapw';
+   GRANT ALL PRIVILEGES ON DATABASE avistadb TO avista;
+   # execute \q to exit psql
+   ```
+   
+## Building and executing with Docker
+
+1. Build docker images (this part still requires an ssh key authorized with github)
+   ```shell
+   # change to main directory of IoT where docker-compose.yml sits
+   sudo docker-compose build --build-arg ssh_prv_key="$(cat ~/.ssh/<your_private_key>)" --build-arg ssh_pub_key="$(cat ~/.ssh/<your_public_key>)"
+   ```
+
+2. If the build was error free, the images can now be spun up in containers
+   ```shell
+   sudo docker-compose up
+   ```
 
 ## Usage
 

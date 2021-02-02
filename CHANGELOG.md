@@ -12,6 +12,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Removed
 
+## [0.1.6](https://github.com/isu-avista/iot/releases/tag/v0.1.6) - 2021-02-01
+
+### Added
+
+### Changed
+* Updated some calls to ProcessorManager that weren't changed to SensorSweep
+* Updated docker files and requirements to run properly on a raspberry pi
+* Changed docker network mode to `host` so the client can be accessed from local network  
+* Changed database connection string to postgres
+* Updated the readme with installation instructions
+
+### Removed
+
 ## [0.1.5](https://github.com/isu-avista/iot/releases/tag/v0.1.5) - 2021-01-11
 
 ### Added
