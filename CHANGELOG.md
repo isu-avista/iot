@@ -12,6 +12,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Removed
 
+## [0.2.0](https://github.com/isu-avista/iot/releases/tag/v0.2.0) - 2021-02-06
+
+### Added
+* Added gunicorn options dictionary to app.py it is passed to IoTServer
+
+### Changed
+* Changed entrypoint in docker-compose from an explicit gunicorn call to running app.py
+* SensorSweep is now started between the initialization, and the start of IoTServer
+
+### Removed
+
 ## [0.1.6](https://github.com/isu-avista/iot/releases/tag/v0.1.6) - 2021-02-01
 
 ### Added

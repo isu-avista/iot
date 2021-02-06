@@ -18,15 +18,16 @@ class IoTServer(Service):
 
     def start(self):
         """ starts the server """
-        super().start()
+        super().initialize()
+        # Initialize calls _setup_endpoints which creates the sensor_sweep
+        # then run the SensorSweep on a thread and then start the rest of the server
         self.sensor_sweep.run()
-        # this is where to add access to the ProcessorManager()
+        super().start()
 
     def stop(self):
         """ Stops the server """
         super().stop()
         self.sensor_sweep.stop()
-        # Also need to kill the ProcessorManager() here
 
     def check_status(self):
         pass

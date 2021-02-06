@@ -4,7 +4,7 @@ services:
 
   backend:
     build: ./server
-    command: gunicorn3 --bind 0.0.0.0:5000 --workers=4 app:app
+    command: python3 app.py
     ports:
       - "5000:5000"
     privileged: True
