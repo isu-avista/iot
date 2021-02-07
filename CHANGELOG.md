@@ -12,6 +12,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Removed
 
+## [0.2.1](https://github.com/isu-avista/iot/releases/tag/v0.2.1) - 2021-02-06
+
+### Added
+
+### Changed
+* Updated axios to 0.21.1 due to a security vulnerability 
+
+### Removed
+
 ## [0.2.0](https://github.com/isu-avista/iot/releases/tag/v0.2.0) - 2021-02-06
 
 ### Added
