@@ -1,4 +1,4 @@
-const basePath = 'http://192.168.0.210:5000/api';
+const basePath = 'http://localhost:5000/api';
 
 export default {
   basePath,
