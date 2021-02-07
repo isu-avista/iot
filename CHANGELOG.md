@@ -12,6 +12,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Removed
 
+## [0.2.2](https://github.com/isu-avista/iot/releases/tag/v0.2.2) - 2021-02-07
+
+### Added
+
+### Changed
+* Both the frontend and backend services defined in docker-compose.yml are now using network_mode: host
+* Replaced the ip addresses in flask.yml and paths.js with localhost, they no longer rely on a local ip address
+
+### Removed
+
 ## [0.2.1](https://github.com/isu-avista/iot/releases/tag/v0.2.1) - 2021-02-06
 
 ### Added
