@@ -12,6 +12,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Removed
 
+## [0.2.3](https://github.com/isu-avista/iot/releases/tag/v0.2.3) - 2021-02-07
+
+### Added
+* Added image options for docker-compose.yml to define the images to be pushed to dockerhub
+
+### Changed
+
+### Removed
+
 ## [0.2.2](https://github.com/isu-avista/iot/releases/tag/v0.2.2) - 2021-02-07
 
 ### Added
