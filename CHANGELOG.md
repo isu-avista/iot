@@ -12,6 +12,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Removed
 
+## [0.2.6](https://github.com/isu-avista/iot/releases/tag/v0.2.6) - 2021-02-08
+
+### Added
+
+### Changed
+* IoTServer._app has been updated to IoTServer.application to match base-server
+
+### Removed
+
 ## [0.2.5](https://github.com/isu-avista/iot/releases/tag/v0.2.5) - 2021-02-08
 
 ### Added
