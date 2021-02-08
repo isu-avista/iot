@@ -5,9 +5,9 @@ from avista_sensors.sensor_sweep import SensorSweep
 
 class IoTServer(Service):
 
-    def __init__(self):
+    def __init__(self, options=None):
         """ instantiate the app """
-        super().__init__()
+        super().__init__(options)
         self.sensor_sweep = None
 
     def _setup_endpoints(self):
