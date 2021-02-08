@@ -12,6 +12,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Removed
 
+## [0.2.5](https://github.com/isu-avista/iot/releases/tag/v0.2.5) - 2021-02-08
+
+### Added
+* Added the options parameter to IoTServer's constructor for gunicorn options in app.py
+
+### Changed
+
+### Removed
+
 ## [0.2.4](https://github.com/isu-avista/iot/releases/tag/v0.2.4) - 2021-02-07
 
 ### Added
