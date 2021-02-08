@@ -1,10 +1,10 @@
+# get base image
 FROM balenalib/raspberry-pi-debian:latest
 
-ARG ssh_prv_key
-ARG ssh_pub_key
-
+# create working directory
 WORKDIR ./
 
+# install dependencies
 RUN apt-get update -y
 RUN apt-get install -y python3
 RUN apt-get install -y python3-pip
@@ -19,21 +19,11 @@ RUN apt-get install -y libatlas-base-dev
 RUN apt-get install -y libpq-dev
 RUN apt-get install -y gpiod libgpiod-dev
 
-RUN mkdir -p /root/.ssh && \
-    chmod 0700 /root/.ssh && \
-    ssh-keyscan github.com > /root/.ssh/known_hosts
-
-
-RUN echo "$ssh_prv_key" > /root/.ssh/id_rsa && \
-    echo "$ssh_pub_key" > /root/.ssh/id_rsa.pub && \
-    chmod 600 /root/.ssh/id_rsa && \
-    chmod 600 /root/.ssh/id_rsa.pub
-
-
+# copy requirements
 COPY ./requirements.txt ./requirements.txt
 
+# install python dependencies
 RUN pip3 install -r requirements.txt
 
+# copy application files
 COPY ./ ./
-
-RUN rm -rf /root/.ssh/
