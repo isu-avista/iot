@@ -20,8 +20,8 @@ class IoTServer(Service):
         """ starts the server """
         super().initialize()
         # Initialize calls _setup_endpoints which creates the sensor_sweep
-        # then run the SensorSweep on a thread and then start the rest of the server
-        self.sensor_sweep.run()
+        # then start the SensorSweep on a thread and then start the rest of the server
+        self.sensor_sweep.start()
         super().start()
 
     def stop(self):

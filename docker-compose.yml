@@ -4,12 +4,14 @@ services:
 
   backend:
     build: ./server
-    image: isuese/avista-iot:latest
+    image: isuese/avista-iot:backend-latest
     command: python3 app.py
     network_mode: host
     privileged: True
+    restart: always
 
   frontend:
     build: ./client
-    image: isuese/avista-iot:latest
+    image: isuese/avista-iot:frontend-latest
     network_mode: host
+    restart: always
