@@ -12,6 +12,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Removed
 
+## [0.2.7](https://github.com/isu-avista/iot/releases/tag/v0.2.7) - 2021-02-09
+
+### Added
+* Added `restart: always` to docker-compose.yml
+
+### Changed
+* Changed SensorSweep.run() to SensorSweep.start() inside server.py
+* Switched avista modules in requirements.txt to use https instead of ssh
+
+### Removed
+
 ## [0.2.6](https://github.com/isu-avista/iot/releases/tag/v0.2.6) - 2021-02-08
 
 ### Added
