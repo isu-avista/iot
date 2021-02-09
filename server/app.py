@@ -13,7 +13,7 @@ if path.exists():
 
 if __name__ == '__main__':
     options = {
-        'bind': '%s:$%s' % ('0.0.0.0', '5000'),
+        'bind': '0.0.0.0:5000',
         'workers': 1,
     }
 
