@@ -12,6 +12,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Removed
 
+## [v0.2.8](https://github.com/isu-avista/iot/releases/tag/v0.2.8) - 2021-02-11
+
+### Added
+
+### Changed
+* Reverted server.py to the point that sensor sweep was added to it
+* Updated app.py to reflect example_app.py from base-server
+
+### Removed
+
 ## [0.2.7](https://github.com/isu-avista/iot/releases/tag/v0.2.7) - 2021-02-09
 
 ### Added
