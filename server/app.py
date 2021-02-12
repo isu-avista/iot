@@ -1,6 +1,7 @@
 from dotenv import load_dotenv
 
 from avista_iot.server import IoTServer
+from avista_base.avista_app import AvistaApp
 from pathlib import Path
 import os
 
@@ -12,9 +13,15 @@ if path.exists():
     load_dotenv(path)
 
 if __name__ == '__main__':
-    options = {
-        'bind': '0.0.0.0:5000',
-        'workers': 1,
-    }
+    service = IoTServer.get_instance()
+    service.initialize()
+    service.start()
+    app = service.get_app()
 
-    IoTServer(options).get_instance().start()
+    options = dict(
+        bind=service.get_hostname() + ":" + service.get_port(),
+        workers=1
+    )
+
+    AvistaApp(app, options).run()
+
