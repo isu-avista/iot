@@ -5,22 +5,19 @@ from avista_sensors.sensor_sweep import SensorSweep
 
 class IoTServer(Service):
 
-    def __init__(self, options=None):
+    def __init__(self):
         """ instantiate the app """
-        super().__init__(options)
+        super().__init__()
         self.sensor_sweep = None
 
     def _setup_endpoints(self):
         super()._setup_endpoints()
-        self.application.register_blueprint(api.api_bp)
-        self.sensor_sweep = SensorSweep(self.application, self._config)
+        self._app.register_blueprint(api.api_bp)
+        self.sensor_sweep = SensorSweep(self._app, self._config)
         self.sensor_sweep.init()
 
     def start(self):
         """ starts the server """
-        super().initialize()
-        # Initialize calls _setup_endpoints which creates the sensor_sweep
-        # then start the SensorSweep on a thread and then start the rest of the server
         self.sensor_sweep.start()
         super().start()
 
