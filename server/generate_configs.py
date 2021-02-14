@@ -5,9 +5,9 @@ import argparse
 
 def init_argparse() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        usage="%(prog) [OPTIONS] ...",
+        usage="%(prog)s [OPTIONS] ...",
         description="Generate configuration files for Avista IoT",
-        epilog="Copyright (C) 2020, 2021 Idaho State University Empirical Software Engineering Lab/"
+        epilog="Copyright (C) 2020, 2021 Idaho State University Empirical SE Lab"
     )
     parser.add_argument("-t", "--dbtype", action="store", type=str, required=True, help="DBMS Type")
     parser.add_argument("-n", "--dbname", action="store", type=str, required=True, help="DBMS Name")
@@ -111,14 +111,14 @@ def main() -> None:
     args = parser.parse_args()
     dic = vars(args)
 
-    dbtype = dic['t']
-    dbname = dic['n']
-    dbip = dic['i']
-    dbport = dic['o']
-    dbpass = dic['p']
-    dbuser = dic['u']
-    host = dic['s']
-    port = dic['r']
+    dbtype = dic['dbtype']
+    dbname = dic['dbname']
+    dbip = dic['dbip']
+    dbport = dic['dbport']
+    dbpass = dic['dbpass']
+    dbuser = dic['dbuser']
+    host = dic['hostname']
+    port = dic['hostport']
 
     generate_server_config(dbtype, dbname, dbip, dbport, dbuser, dbpass, host, port)
     generate_flask_config()
