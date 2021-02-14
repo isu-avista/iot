@@ -4,3 +4,4 @@ This includes the server as a singleton and the config information for that flas
 """
 
 from avista_iot import server
+

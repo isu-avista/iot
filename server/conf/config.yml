@@ -22,6 +22,14 @@ sysdata:
     type: number
 dbdata:
   -
+    item: DBMS Type
+    value: 'postgres'
+    type: text
+  -
+    item: DBMS DB Name
+    value: 'avistadb'
+    type: text
+  -
     item: DBMS IP Address
     value: '127.0.0.1'
     type: text

@@ -1,11 +1,21 @@
 # get base image
 FROM balenalib/raspberry-pi-debian:latest
 
+# Arguments
+ARG dbtype
+ARG dbname
+ARG dbip
+ARG dbport
+ARG dbuser
+ARG dbpass
+ARG hostname
+ARG hostport
+
 # create working directory
 WORKDIR ./
 
 # install dependencies
-RUN apt-get update -y
+#RUN apt-get update -y
 RUN apt-get install -y python3
 RUN apt-get install -y python3-pip
 RUN apt-get install -y python-dev
@@ -27,3 +37,5 @@ RUN pip3 install -r requirements.txt
 
 # copy application files
 COPY ./ ./
+
+RUN python3 generate_configs.py -t $dbtype -n $dbname -i $dbip -o $dbport -p $dbpass -u $dbuser -s $hostname -r $hostport
