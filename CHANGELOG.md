@@ -20,6 +20,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 * Fixed minor errors in the systemd service specification, verified on RPi 4 to be correct
 * Updated the requirements.txt file
 * Fixed minor errors in the docker-compose.yml file
+* Updated documentation
 
 ### Removed
 
