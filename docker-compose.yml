@@ -8,10 +8,10 @@ services:
     command: python3 app.py
     network_mode: host
     privileged: True
-    restart: always
+    # restart: always
 
   frontend:
     # build: ./client
     image: isuese/avista-iot-client:latest
     network_mode: host
-    restart: always
+    # restart: always
