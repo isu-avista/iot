@@ -25,3 +25,4 @@ python-dotenv==0.15.0
 PyMLX90614==0.0.3
 adafruit-circuitpython-dht==3.5.4
 adafruit-circuitpython-mcp3xxx==1.4.3
+requests~=2.25.0

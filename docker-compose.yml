@@ -3,15 +3,15 @@ version: "3.9"
 services:
 
   backend:
-    build: ./server
-    image: isuese/avista-iot:backend-latest
+    # build: ./server
+    image: isuese/avista-iot-server:latest
     command: python3 app.py
     network_mode: host
     privileged: True
     restart: always
 
   frontend:
-    build: ./client
-    image: isuese/avista-iot:frontend-latest
+    # build: ./client
+    image: isuese/avista-iot-client:latest
     network_mode: host
     restart: always
