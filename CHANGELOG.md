@@ -12,6 +12,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Removed
 
+## [v0.3.2](https://github.com/isu-avista/iot/releases/tag/v0.3.2) - 2021-02-15
+
+### Added
+
+### Changed
+* Fixed minor errors in the systemd service specification, verified on RPi 4 to be correct
+* Updated the requirements.txt file
+* Fixed minor errors in the docker-compose.yml file
+* Updated documentation
+
+### Removed
+
 ## [v0.3.1](https://github.com/isu-avista/iot/releases/tag/v0.3.1) - 2021-02-14
 
 ### Added
