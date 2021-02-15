@@ -5,13 +5,11 @@ After=network.target docker.service
 
 [Service]
 Type=oneshot
+RemainAfterExit=true
 ExecStart=/usr/local/bin/docker-compose -f /opt/avista/avista.yml up -d --remove-orphans
 ExecStop=/usr/local/bin/docker-compose -f /opt/avista/avista.yml down -v
-Restart=no
+WorkingDirectory=/opt/avista
 User=pi
-WorkingDirector=/opt/avista
-RuntimeDirector=/opt/avista
-RuntimeDirectoryMode=0755
 
 [Install]
 WantedBy=multi-user.target
