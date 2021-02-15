@@ -28,6 +28,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Removed
 
+* build.sh from the server as this was a useless file
+
 ## [v0.2.8](https://github.com/isu-avista/iot/releases/tag/v0.2.8) - 2021-02-11
 
 ### Added
