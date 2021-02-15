@@ -1,11 +1,11 @@
 import setuptools
 
-with open("README.md", "r") as fh:
+with open("../README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
     name="avista_iot",
-    version="0.2.8",
+    version="0.3.0",
     author="Isaac Griffith",
     author_email="grifisaa@isu.edu",
     description="",

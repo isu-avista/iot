@@ -12,6 +12,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Removed
 
+## [v0.3.0](https://github.com/isu-avista/iot/releases/tag/v0.3.0) - 2021-02-14
+
+### Added
+
+* Added installation scripts
+* Added systemd service
+* Added a script to generate the configuration information during docker build
+
+### Changed
+
+* App.py to conform to the definition found in base-server
+* Updated the Dockerfiles to build the images in order to have the correct bindings
+* Updated the docker-compose.yml file to use the images from the docker-hub repo rather than local images
+
+### Removed
+
 ## [v0.2.8](https://github.com/isu-avista/iot/releases/tag/v0.2.8) - 2021-02-11
 
 ### Added

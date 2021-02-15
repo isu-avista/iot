@@ -61,8 +61,8 @@ groupadd avista
 groupadd docker
 usermod -aG docker avista
 usermod -aG avista avista
+usermod -aG docker pi
 systemctl restart docker
-
 
 # Create install directory
 mkdir /opt/avista
@@ -76,19 +76,16 @@ cd /opt/avista
 
 # Collect the appropriate scripts and install them where they belong
 # 1. need the docker compose script
-# curl https://raw.githubusercontent.com/isu-avista/portal/master/docker-compose.yml
-
-cp /home/pi/Downloads/docker-compose.yml /opt/avista/avista.yml
+curl https://raw.githubusercontent.com/isu-avista/portal/master/docker-compose.yml
+cp docker-compose.yml /opt/avista/avista.yml
 
 # 2. need the systemd service
 
-# curl https://raw.githubusercontent.com/isu-avista/portal/master/scripts/avista.service
+curl https://raw.githubusercontent.com/isu-avista/portal/master/scripts/avista.service
 
 # 3. Install, enable, and start the  systemd service
 
-# sudo mv avista.service /etc/systemd/system/avista.service
-cp /home/pi/Downloads/scripts/avista.service /etc/systemd/system/avista.service
+mv avista.service /etc/systemd/system/avista.service
 
 systemctl enable avista
 systemctl start avista
-
