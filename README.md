@@ -14,51 +14,69 @@ The IoT component of an energy management decision support tool.
 
 ## Installation
 
-1. Clone the IoT repository 
+1. Retrieve the install script:
+
    ```shell
-   git clone https://github.com/isu-avista/iot.git
+   curl -fsSL https://raw.githubusercontent.com/isu-avista/iot/master/scripts/install.sh
+   ```
+ 
+2. Make the script executable
+
+   ```shell
+   chmod +x install.sh
    ```
    
-2. Install docker and docker-compose
+3. Execute the install script as sudo
+
    ```shell
-   # install docker
-   curl -fsSL https://get.docker.com -o get-docker.sh
-   sudo sh get-docker.sh
-   
-   # install docker-compose
-   python3 -m pip install docker-compose
+   sudo ./install.sh -u avista -d avistadb -p avistapw
    ```
    
-3. Install latest libseccomp2 (there will be an issue building the docker image if this step is skipped)
-   ```shell
-   wget http://ftp.debian.org/debian/pool/main/libs/libseccomp/libseccomp2_2.5.1-1_armhf.deb
-   sudo dpkg -i libseccomp2_2.5.1-1_armhf.deb
-   ```
-   
-4. Install postgres, create a user and a database
-   ```shell
-   # install postgres
-   sudo apt install postgresql libpq-dev postgresql-client postgresql-client-common -y
-   
-   # open psql
-   sudo -u postgresl psql
-   
-   # now in psql execute the following commands
-   CREATE DATABASE avistadb;
-   CREATE USER avista WITH ENCRYPTED PASSWORD 'avistapw';
-   GRANT ALL PRIVILEGES ON DATABASE avistadb TO avista;
-   # execute \q to exit psql
-   ```
+   The options are based on the default setup that comes with the image
+   - u : sets the username to be used in the database
+   - p : sets the password for the database
+   - d : sets the database name
+
+This process will create the folder `/opt/avista` where the docker-compose file will reside.
+It will setup a service based on this file that will be used to start the system on startup.
+Finally, it will setup the database using the command line arguments.
    
 ## Building and executing with Docker
 
 1. Build docker images (this part still requires an ssh key authorized with github)
-   ```shell
-   # change to main directory of IoT where docker-compose.yml sits
-   sudo docker-compose build --build-arg ssh_prv_key="$(cat ~/.ssh/<your_private_key>)" --build-arg ssh_pub_key="$(cat ~/.ssh/<your_public_key>)"
-   ```
 
-2. If the build was error free, the images can now be spun up in containers
+   1. Login to docker to be able to push the docker images to dockerhub
+   
+      ```shell
+      docker login --username <your-username> --password <your-password>
+      ```
+   
+   2. Build the server image, from the project root directory
+
+      ```shell
+      cd server
+      docker build \
+             --build-arg dbtype=postgres \
+             --build-arg dbname=avistadb \
+             --build-arg dbuser=avista \
+             --build-arg dbpass=avistapw \
+             --build-arg dbip=localhost \
+             --build-arg dbport=5432 \
+             --build-arg hostname=localhost \
+             --build-arg port=5000 \
+             -t isuese/avista-iot-server:latest .
+      docker push isuese/avista-iot-server:latest
+      ```
+      
+   3. Build the client image, from the project root directory:
+   
+      ```shell
+      cd client
+      docker build -t isuese/avista-iot-client:latest .
+      docker push isuese/avista-iot-client:latest
+      ```
+
+2. If the build was error free, the images can now be spun up in containers. From the project root directory
    ```shell
    sudo docker-compose up
    ```
@@ -113,7 +131,7 @@ This will start the server on localhost port 5000
 curl --header "Content-Type: application/json" --request POST --data '{"email":"admin@isu.edu","password":"admin"}' http://localhost:5000/api/login
 ```
 
-```bash
+```shell
 $ curl http://localhost:5000/protected
 {
   "msg": "Missing Authorization Header"
@@ -139,7 +157,7 @@ $ curl -H "Authorization: Bearer $ACCESS" http://localhost:5000/protected
 
 #### Generating secret keys
 
-```bash
+```shell
 python3 -c "import uuid; print(uuid.uuid4().hex)"
 ```
 
@@ -160,7 +178,7 @@ This module was contributed to by:
 
 ## License
 
-Copyright (c) 2020 Idaho State University Empirical Software Engineering Laboratory
+Copyright (c) 2020, 2021 Idaho State University Empirical Software Engineering Laboratory
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

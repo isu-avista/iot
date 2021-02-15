@@ -13,7 +13,7 @@ class IoTServer(Service):
     def _setup_endpoints(self):
         super()._setup_endpoints()
         self._app.register_blueprint(api.api_bp)
-        self.sensor_sweep = SensorSweep(self._app, self._config)
+        self.sensor_sweep = SensorSweep(self._app, 1, 3, self._config)
         self.sensor_sweep.init()
 
     def start(self):
