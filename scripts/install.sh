@@ -76,12 +76,12 @@ cd /opt/avista
 
 # Collect the appropriate scripts and install them where they belong
 # 1. need the docker compose script
-curl https://raw.githubusercontent.com/isu-avista/portal/master/docker-compose.yml
-cp docker-compose.yml /opt/avista/avista.yml
+curl https://raw.githubusercontent.com/isu-avista/portal/master/docker-compose.yml -o docker-compose.yml
+mv docker-compose.yml /opt/avista/avista.yml
 
 # 2. need the systemd service
 
-curl https://raw.githubusercontent.com/isu-avista/portal/master/scripts/avista.service
+curl https://raw.githubusercontent.com/isu-avista/portal/master/scripts/avista.service -o avista.service
 
 # 3. Install, enable, and start the  systemd service
 
