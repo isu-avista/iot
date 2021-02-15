@@ -17,7 +17,7 @@ The IoT component of an energy management decision support tool.
 1. Retrieve the install script:
 
    ```shell
-   curl -fsSL https://raw.githubusercontent.com/isu-avista/iot/master/scripts/install.sh
+   curl -fsSL https://raw.githubusercontent.com/isu-avista/iot/master/scripts/install.sh -o install.sh
    ```
  
 2. Make the script executable
