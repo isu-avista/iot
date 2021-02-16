@@ -19,11 +19,11 @@ sys.setrecursionlimit(1500)
 # -- Project information -----------------------------------------------------
 
 project = 'avista-iot'
-copyright = '2020, Isaac Griffith, Andrew Christiansen'
+copyright = '2020-2021, Isaac Griffith, Andrew Christiansen'
 author = 'Isaac Griffith, Andrew Christiansen'
 
 # The full version, including alpha/beta/rc tags
-release = 'v0.3.3'
+release = 'v0.3.4'
 
 
 # -- General configuration ---------------------------------------------------
