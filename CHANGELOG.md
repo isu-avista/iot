@@ -12,6 +12,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Removed
 
+## [v0.3.4](https://github.com/isu-avista/iot/releases/tag/v0.3.4) - 2021-02-16
+
+### Added
+* script to build and push docker images
+
+### Changed
+* Updated requirements.txt
+* Updated documentation
+
+### Removed
+
+
 ## [v0.3.3](https://github.com/isu-avista/iot/releases/tag/v0.3.3) - 2021-02-15
 
 ### Added
