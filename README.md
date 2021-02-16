@@ -63,7 +63,7 @@ Finally, it will setup the database using the command line arguments.
              --build-arg dbip=localhost \
              --build-arg dbport=5432 \
              --build-arg hostname=localhost \
-             --build-arg port=5000 \
+             --build-arg hostport=5000 \
              -t isuese/avista-iot-server:latest .
       docker push isuese/avista-iot-server:latest
       ```
