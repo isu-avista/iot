@@ -5,12 +5,12 @@ services:
   backend:
     # build: ./server
     image: isuese/avista-iot-server:latest
-    command: python3 app.py
+    command: /usr/bin/python3 app.py
     network_mode: host
     privileged: True
-    # restart: always
-    ports:
-      - "5000:5000"
+    restart: always
+    #ports:
+    #- "5000:5000"
 
   frontend:
     # build: ./client
