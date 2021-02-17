@@ -12,6 +12,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Removed
 
+## [v0.3.7](https://github.com/isu-avista/iot/releases/tag/v0.3.7) - 2021-02-16
+### Added
+
+### Changed
+* Fixed the dockerfile, docker-compose spec, and the docker_push script to correctly produce the project in order to ensure it is installation ready.
+
+### Removed
+
 ## [v0.3.6](https://github.com/isu-avista/iot/releases/tag/v0.3.6) - 2021-02-16
 ### Added
 
