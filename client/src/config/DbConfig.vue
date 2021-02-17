@@ -50,7 +50,7 @@
 import axios from 'axios';
 import authHeader from '@/services/auth-header';
 
-const host = window.location.protocol + '//' + window.location.host;
+const host = `${window.location.protocol}//${window.location.host}`;
 
 export default {
   name: 'DbConfig',

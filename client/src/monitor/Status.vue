@@ -20,7 +20,7 @@ import axios from 'axios';
 import authHeader from '@/services/auth-header';
 import paths from '@/paths';
 
-const host = window.location.protocol + '//' + window.location.host;
+const host = `${window.location.protocol}//${window.location.host}`;
 
 export default {
   name: 'Status',
