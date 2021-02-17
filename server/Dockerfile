@@ -30,7 +30,3 @@ COPY ./ ./
 
 # Generate the config files
 RUN python3 generate_configs.py -t $dbtype -n $dbname -i $dbip -o $dbport -p $dbpass -u $dbuser -s $hostname -r $hostport
-
-FROM nginx as production-stage
-COPY nginx.conf /etc/nginx/nginx.conf
-CMD ["nginx", "-g", "daemon off;"]
