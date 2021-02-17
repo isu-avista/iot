@@ -20,6 +20,8 @@ import axios from 'axios';
 import authHeader from '@/services/auth-header';
 import paths from '@/paths';
 
+const host = window.location.protocol + "//" + window.location.host;
+
 export default {
   name: 'Status',
   data() {
@@ -31,7 +33,7 @@ export default {
   },
   methods: {
     getData() {
-      const path = paths.status;
+      const path = host + paths.status;
       axios.get(path, { headers: authHeader() })
         .then((res) => {
           this.items = [];

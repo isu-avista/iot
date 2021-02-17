@@ -50,6 +50,8 @@
 import axios from 'axios';
 import authHeader from '@/services/auth-header';
 
+const host = window.location.protocol + "//" + window.location.host;
+
 export default {
   name: 'DbConfig',
   props: {
@@ -72,7 +74,7 @@ export default {
 
     },
     getData() {
-      axios.get(this.path, { headers: authHeader() })
+      axios.get(host + this.path, { headers: authHeader() })
         .then((res) => {
           this.items = res.data;
         })
@@ -98,7 +100,7 @@ export default {
       this.updateData(payload);
     },
     updateData(payload) {
-      axios.put(this.path, payload, { headers: authHeader() })
+      axios.put(host + this.path, payload, { headers: authHeader() })
         .then(() => {
           this.getData();
           this.message = 'Configuration Updated!';

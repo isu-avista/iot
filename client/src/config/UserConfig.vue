@@ -126,6 +126,8 @@ import axios from 'axios';
 import authHeader from '@/services/auth-header';
 import paths from '@/paths';
 
+const host = window.location.protocol + "//" + window.location.host;
+
 export default {
   name: 'UserConfig',
   data() {
@@ -148,7 +150,7 @@ export default {
   },
   methods: {
     getData() {
-      const path = paths.userCfg;
+      const path = host + paths.userCfg;
       axios.get(path, { headers: authHeader() })
         .then((res) => {
           this.users = res.data;
@@ -159,7 +161,7 @@ export default {
         });
     },
     addUser(payload) {
-      const path = paths.userCfg;
+      const path = host + paths.userCfg;
       axios.post(path, payload, { headers: authHeader() })
         .then(() => {
           this.getData();
@@ -217,7 +219,7 @@ export default {
       this.updateUser(payload, this.editForm.id);
     },
     updateUser(payload, userID) {
-      const path = `${paths.userCfg}/${userID}`;
+      const path = `${host}${paths.userCfg}/${userID}`;
       axios.put(path, payload, { headers: authHeader() })
         .then(() => {
           this.getData();
@@ -235,7 +237,7 @@ export default {
       this.getUsers();
     },
     removeUser(userID) {
-      const path = `${paths.userCfg}/${userID}`;
+      const path = `${host}${paths.userCfg}/${userID}`;
       axios.delete(path, { headers: authHeader() })
         .then(() => {
           this.getData();

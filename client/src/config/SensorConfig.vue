@@ -255,6 +255,8 @@ import axios from 'axios';
 import authHeader from '@/services/auth-header';
 import paths from '@/paths';
 
+const host = window.location.protocol + "//" + window.location.host;
+
 export default {
   name: 'SensorConfig',
   data() {
@@ -299,7 +301,7 @@ export default {
   },
   methods: {
     getData() {
-      const path = paths.sensorCfg;
+      const path = host + paths.sensorCfg;
       axios.get(path, { headers: authHeader() })
         .then((res) => {
           this.sensors = res.data;
@@ -325,7 +327,7 @@ export default {
       this.editSensorForm.parameters = [];
     },
     addSensor(payload) {
-      const path = paths.sensorCfg;
+      const path = host + paths.sensorCfg;
       axios.post(path, payload, { headers: authHeader() })
         .then(() => {
           this.getData();
@@ -340,7 +342,7 @@ export default {
       this.editSensorForm = sensor;
     },
     updateSensor(payload, sensorID) {
-      const path = `${paths.sensorCfg}/${sensorID}`;
+      const path = `${host}${paths.sensorCfg}/${sensorID}`;
       axios.put(path, payload, { headers: authHeader() })
         .then(() => {
           this.getData();
@@ -352,7 +354,7 @@ export default {
         });
     },
     removeSensor(sensorID) {
-      const path = `${paths.sensorCfg}/${sensorID}`;
+      const path = `${host}${paths.sensorCfg}/${sensorID}`;
       axios.delete(path, { headers: authHeader() })
         .then(() => {
           this.getData();
