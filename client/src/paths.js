@@ -1,5 +1,3 @@
-const basePath = 'http://0.0.0.0:5000/api';
-
 export default {
   login: ':5000/api/login',
   register: ':5000/api/register',

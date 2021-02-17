@@ -13,7 +13,7 @@ docker build \
        --build-arg hostname=0.0.0.0 \
        --build-arg hostport=5000 \
        -t isuese/avista-iot-server:latest \
-       --no-cache .
+       .
 docker push isuese/avista-iot-server:latest
 
 cd ../client
