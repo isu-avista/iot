@@ -12,6 +12,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Removed
 
+## [v0.3.8](https://github.com/isu-avista/iot/releases/tag/v0.3.8) - 2021-02-17
+### Added
+
+### Changed
+* Updated to recent base-server
+
+### Removed
+
 ## [v0.3.7](https://github.com/isu-avista/iot/releases/tag/v0.3.7) - 2021-02-16
 ### Added
 
