@@ -4,14 +4,16 @@ from pathlib import Path
 from dotenv import load_dotenv
 import os
 from avista_iot.server import IoTServer
-from avista_data import db
+import avista_data
 
 
 class BaseApiTest(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        basedir = Path(__file__).parent.absolute() / ".." / ".." / "test-data"
+        while not os.path.isdir("test-data"):
+            os.chdir("..")
+        basedir = Path(os.getcwd()).absolute() / "test-data"
         cls.write_env_file(basedir, "test.env")
         load_dotenv(os.path.join(basedir, 'test.env'))
 
@@ -23,11 +25,12 @@ class BaseApiTest(unittest.TestCase):
 
     def setUp(self):
         self.server = IoTServer.get_instance()
+        self.server.initialize()
         self.server.start()
-        self.client = self.server.app.test_client()
+        self.client = self.server._app.test_client()
 
     def tearDown(self):
-        db.drop_all()
+        avista_data.database.clear_data()
         self.server.stop()
 
     @staticmethod

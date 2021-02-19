@@ -14,7 +14,7 @@ def get_ipaddress():
         ip = s.getsockname()[0]
         s.close()
         return ip
-    except socket.error as error:
+    except socket.error:
         return "localhost"
 
 # configuration
