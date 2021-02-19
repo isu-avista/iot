@@ -12,6 +12,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Removed
 
+## [v0.3.9](https://github.com/isu-avista/iot/releases/tag/v0.3.9) - 2021-02-19
+### Added
+
+### Changed
+* Updated to include changes in avista-data and avista-base-server
+
+### Removed
+* Removed all code that interacted with the sensors and place it in the sensors module
+* The server now only provides the ability to configure the system, and does not have anything to do with data collection
+
 ## [v0.3.8](https://github.com/isu-avista/iot/releases/tag/v0.3.8) - 2021-02-17
 ### Added
 

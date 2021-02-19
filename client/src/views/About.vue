@@ -65,16 +65,27 @@
       <b-row>
         <b-col>
           <b-card title="Andrew Christiansen">
+            <img src="../assets/andrew.png"/>
             <b-card-text>Computer Science</b-card-text>
           </b-card>
         </b-col>
         <b-col>
           <b-card title="Avery Conlin">
+            <img src="../assets/avery.png"/>
             <b-card-text>Mechanical Engineering</b-card-text>
+          </b-card>
+        </b-col>
+      </b-row>
+      <b-row>
+        <b-col>
+          <b-card title="Hunter Harris">
+            <img src="../assets/hunter.png"/>
+            <b-card-text>Computer Science</b-card-text>
           </b-card>
         </b-col>
         <b-col>
           <b-card title="Safal Lama">
+            <img src="../assets/safal.png"/>
             <b-card-text>Mechanical Engineering</b-card-text>
           </b-card>
         </b-col>

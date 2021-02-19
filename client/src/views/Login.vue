@@ -41,6 +41,10 @@
 <script>
 import User from '../models/user';
 
+const host = `${window.location.protocol}//${window.location.hostname}`;
+// eslint-disable-next-line
+console.log(host)
+
 export default {
   name: 'Login',
   data() {

@@ -1,7 +1,7 @@
 from avista_iot.api import api_bp as bp
 from avista_data.data_point import DataPoint
 from avista_data.sensor import Sensor
-from flask import request, jsonify
+from flask import request, jsonify, current_app
 from avista_data.role import Role
 from avista_iot import server
 from avista_iot.api import role_required
@@ -30,7 +30,8 @@ def get_data(sensor):
         'units': str(sensor.get_unit()),
     }
     data = []
-    points = DataPoint.query.filter_by(sensor_id=sensor.get_id()).order_by(DataPoint.timestamp).all()
+    points = current_app.session.query(DataPoint).filter_by(sensor_id=sensor.get_id())\
+        .order_by(DataPoint.timestamp).all()
     for point in points:
         data.append([point.get_timestamp(), point.get_value()])
     item['data'] = data
@@ -46,8 +47,8 @@ def get_data_since(sensor, since):
         'units': sensor.get_unit(),
     }
     data = []
-    points = DataPoint.query.filter_by(sensor_id=sensor.get_id()).filter(DataPoint.timestamp >= since).order_by(
-        DataPoint.timestamp).all()
+    points = current_app.session.query(DataPoint).filter_by(sensor_id=sensor.get_id())\
+        .filter(DataPoint.timestamp >= since).order_by(DataPoint.timestamp).all()
     for point in points:
         data.append([point.get_timestamp(), point.get_value()])
     item['data'] = data
@@ -58,7 +59,7 @@ def get_data_since(sensor, since):
 @role_required(Role.USER)
 def read_sensor_data():
     items = []
-    sensors = Sensor.query.all()
+    sensors = current_app.session.query(Sensor).all()
     since = request.args.get('since')
     if since is not None:
         for sensor in sensors:
@@ -75,7 +76,7 @@ def read_sensor_data():
 @role_required(Role.USER)
 def read_sensor_data_since(sensor_id):
     since = request.args.get('since')
-    sensor = Sensor.query.filter_by(sensor_id=sensor_id).first()
+    sensor = current_app.session.query(Sensor).filter_by(sensor_id=sensor_id).first()
     if since is not None:
         get_data_since(sensor, since)
     else:

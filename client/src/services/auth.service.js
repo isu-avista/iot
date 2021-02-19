@@ -2,13 +2,13 @@
 import axios from 'axios';
 import paths from "@/paths";
 
-const API_URL = paths.basePath;
+const host = `${window.location.protocol}//${window.location.hostname}`;
 
 class AuthService {
   // POST {username, password} & save JWT to local storage
   login(user) {
     return axios
-      .post(`${API_URL}/login`, {
+      .post(`${host}${paths.login}`, {
         email: user.email,
         password: user.password,
       })
@@ -30,7 +30,7 @@ class AuthService {
 
   // POST {email, password}
   register(user) {
-    return axios.post('$API_URL/register', {
+    return axios.post(`${host}${paths.register}`, {
       email: user.email,
       password: user.password,
     });

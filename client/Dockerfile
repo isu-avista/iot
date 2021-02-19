@@ -14,7 +14,7 @@ RUN npm install
 COPY ./ ./
 
 # build app for production with minification
-RUN npm run build
+RUN npm run build --fix
 
 
 FROM nginx as production-stage

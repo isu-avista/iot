@@ -19,6 +19,8 @@ import axios from 'axios';
 import authHeader from '@/services/auth-header';
 import paths from '@/paths';
 
+const host = `${window.location.protocol}//${window.location.hostname}`;
+
 export default {
   name: 'Sensors',
   components: {
@@ -31,7 +33,7 @@ export default {
   },
   methods: {
     getData() {
-      const path = paths.sensor;
+      const path = host + paths.sensor;
       axios.get(path, { headers: authHeader() })
         .then((res) => {
           this.sensors = [];

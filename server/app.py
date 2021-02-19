@@ -4,6 +4,18 @@ from avista_iot.server import IoTServer
 from avista_base.avista_app import AvistaApp
 from pathlib import Path
 import os
+import socket
+
+def get_ipaddress():
+    try :
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.settimeout(10)
+        s.connect(("8.8.8.8", 80))
+        ip = s.getsockname()[0]
+        s.close()
+        return ip
+    except socket.error:
+        return "localhost"
 
 # configuration
 DEBUG = True
@@ -19,7 +31,7 @@ if __name__ == '__main__':
     app = service.get_app()
 
     options = dict(
-        bind=f'{service.get_hostname()}:{service.get_port()}',
+        bind=f'{get_ipaddress()}:{service.get_port()}',
         workers=1
     )
 

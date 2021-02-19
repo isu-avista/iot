@@ -89,6 +89,8 @@ import axios from 'axios';
 import authHeader from '@/services/auth-header';
 import paths from '@/paths';
 
+const host = `${window.location.protocol}//${window.location.hostname}`;
+
 export default {
   name: 'SystemConfig',
   data() {
@@ -118,8 +120,8 @@ export default {
 
     },
     getData() {
-      // const path = paths.systemCfg;
-      const path = 'http://localhost:5000/api/sysdata';
+      const path = host + paths.systemCfg;
+      //const path = 'http://localhost:5000/api/sysdata';
       axios.get(path, { headers: authHeader() })
         .then((res) => {
           this.sys_data = res.data;
@@ -145,8 +147,8 @@ export default {
       this.updateData(payload, this.editForm.id);
     },
     updateData(payload) {
-      // const path = paths.systemCfg;
-      const path = 'http://localhost:5000/config/sysdata';
+      const path = host + paths.systemCfg;
+      //const path = 'http://localhost:5000/config/sysdata';
       axios.put(path, payload, { headers: authHeader() })
         .then(() => {
           this.getData();

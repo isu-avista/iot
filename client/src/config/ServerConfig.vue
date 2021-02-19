@@ -160,6 +160,8 @@ import axios from 'axios';
 import authHeader from '@/services/auth-header';
 import paths from '@/paths';
 
+const host = `${window.location.protocol}//${window.location.hostname}`;
+
 export default {
   name: 'ServerConfig',
   data() {
@@ -190,7 +192,7 @@ export default {
   },
   methods: {
     getData() {
-      const path = paths.serverCfg;
+      const path = host + paths.serverCfg;
       axios.get(path, { headers: authHeader() })
         .then((res) => {
           this.servers = res.data;
@@ -212,7 +214,7 @@ export default {
       this.editServerForm.periodicity = 0;
     },
     addServer(payload) {
-      const path = paths.serverCfg;
+      const path = host + paths.serverCfg;
       axios.post(path, payload, { headers: authHeader() })
         .then(() => {
           this.getData();
@@ -227,7 +229,7 @@ export default {
       this.editServerForm = server;
     },
     updateServer(payload, serverID) {
-      const path = `${paths.serverCfg}/${serverID}`;
+      const path = `${host}${paths.serverCfg}/${serverID}`;
       axios.put(path, payload, { headers: authHeader() })
         .then(() => {
           this.getData();
@@ -239,7 +241,7 @@ export default {
         });
     },
     removeServer(serverID) {
-      const path = `${paths.serverCfg}/${serverID}`;
+      const path = `${host}${paths.serverCfg}/${serverID}`;
       axios.delete(path, { headers: authHeader() })
         .then(() => {
           this.getData();
