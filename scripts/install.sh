@@ -56,7 +56,7 @@ echo GRANT ALL PRIVILEGES ON DATABASE $db TO $user; >> setup.sql
 sudo -u postgres psql -f setup.sql
 
 # Create user
-adduser --system --no-create-home avisa
+adduser --system --no-create-home avista
 groupadd avista
 groupadd docker
 usermod -aG docker avista
