@@ -27,6 +27,7 @@ done
 command_exists "python3"
 if [[ $? -ne 0 ]]; then
     apt-get install python3 -y
+    apt-get install python3-pip -y
 fi
 
 # Install docker if not already installed
@@ -49,9 +50,9 @@ if [[ $? -ne 0 ]]; then
 fi
 
 # Generate and execute the database setup script
-echo CREATE DATABASE $db; > setup.sql
-echo CREATE USER $user WITH ENCRYPTED PASSWORD '$pass'; >> setup.sql
-echo GRANT ALL PRIVILEGES ON DATABASE $db TO $user; >> setup.sql
+echo "CREATE DATABASE $db;" > setup.sql
+echo "CREATE USER $user WITH ENCRYPTED PASSWORD '$pass';" >> setup.sql
+echo "GRANT ALL PRIVILEGES ON DATABASE $db TO $user;" >> setup.sql
 
 sudo -u postgres psql -f setup.sql
 
