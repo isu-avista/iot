@@ -1,5 +1,5 @@
 # get base image
-FROM python:3
+FROM balenalib/raspberry-pi-debian:latest
 
 # Arguments
 ARG dbtype
@@ -27,6 +27,8 @@ RUN pip3 install -r requirements.txt
 
 # copy application files
 COPY ./ ./
+
+RUN mkdir logs && touch logs/server.log
 
 # Generate the config files
 RUN python3 generate_configs.py -t $dbtype -n $dbname -i $dbip -o $dbport -p $dbpass -u $dbuser -s $hostname -r $hostport
