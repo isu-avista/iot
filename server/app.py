@@ -6,8 +6,9 @@ from pathlib import Path
 import os
 import socket
 
+
 def get_ipaddress():
-    try :
+    try:
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         s.settimeout(10)
         s.connect(("8.8.8.8", 80))
@@ -16,6 +17,7 @@ def get_ipaddress():
         return ip
     except socket.error:
         return "localhost"
+
 
 # configuration
 DEBUG = True
@@ -36,4 +38,3 @@ if __name__ == '__main__':
     )
 
     AvistaApp(app, options).run()
-
