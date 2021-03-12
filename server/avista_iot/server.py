@@ -1,7 +1,6 @@
 from avista_iot import api
 from avista_base.service import Service
-
-from multiprocessing import Process
+# from multiprocessing import Process
 
 
 class IoTServer(Service):
