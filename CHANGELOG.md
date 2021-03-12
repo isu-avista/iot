@@ -12,6 +12,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Removed
 
+## [v0.3.10](https://github.com/isu-avista/iot/releases/tag/v0.3.10) - 2021-03-12
+### Added
+* Added `qemu-user-static` package to travis.yml for building for arm architecture
+* Added a method to `generate_configs.py` that will create the logs directory and log file if they don't exist
+
+### Changed
+* `docker_push` script now uses buildx to build docker images for arm architecture
+* Made some syntactical changes to `install.sh` and apt install pip for docker-compose
+
+### Removed
+* Removed the call to `Process` in `app.py` that starts the default flask web server
+
 ## [v0.3.9](https://github.com/isu-avista/iot/releases/tag/v0.3.9) - 2021-02-19
 ### Added
 
